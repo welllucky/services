@@ -1,3 +1,4 @@
+import { InfoUnityProps } from "@/types";
 import {
   InfoUnityContainer,
   InfoUnityDescription,
@@ -5,11 +6,7 @@ import {
   InfoUnityId,
 } from "./styles";
 
-export interface InfoUnityProps {
-  id: string;
-  description: string;
-  icon?: string;
-}
+
 
 export const InfoUnity = ({ icon, description, id }: InfoUnityProps) => {
   return (

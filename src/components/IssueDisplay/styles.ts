@@ -28,7 +28,7 @@ export const IssueWrapper = styled(Link)<ContainerStyleProps>`
   width: 100%;
   height: fit-content;
   position: relative;
-  background-color: #d9f5c5;
+  background-color: ${({ color }) => color ?? "#D9F5C5"};
   border-radius: 1rem;
   border: 0.2rem solid #7ac143;
 
@@ -42,13 +42,12 @@ export const IssueWrapper = styled(Link)<ContainerStyleProps>`
     border: 0.35rem solid ${({ $borderColor }) => $borderColor ?? "#38a914"};
   }
 
-  transition: 0.3s ease-in-out;   
+  transition: 0.3s ease-in-out;
 `;
 
 export const IssueContainer = styled(Row)<ContainerStyleProps>`
   display: flex;
   padding: 0.8rem;
-  background-color: ${({ color }) => color ?? "#D9F5C5"};
   border-radius: 1rem;
   justify-content: space-between;
   transition: 0.3s ease-in-out;
@@ -57,7 +56,7 @@ export const IssueContainer = styled(Row)<ContainerStyleProps>`
 export const IssueContent = styled.div<{ $hasUpdate?: boolean }>`
   display: flex;
   flex-direction: column;
-  width: max-content;
+  max-height: 80px;
   gap: 0.8rem;
   flex: 6;
   justify-content: space-between;
@@ -77,7 +76,8 @@ export const IssueContent = styled.div<{ $hasUpdate?: boolean }>`
 export const IssueState = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.6rem;
+  max-height: 80px;
   flex: 2;
 `;
 
@@ -119,24 +119,20 @@ export const IssueStatus = styled.div`
   padding: 0;
   height: 50%;
   width: max-content;
-
+  width: 100%;
   font-weight: 500;
   font-size: 0.8rem;
   line-height: 1rem;
-  overflow: hidden;
 `;
 
 export const OpeningText = styled.p`
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.25rem;
   color: ${({ theme }) => theme.colors.neutral.inverted};
-  height: 20px;
-  width: 70px;
+  width: 100%;
   word-break: break-all;
   line-break: anywhere;
-  overflow-y: scroll;
-  overflow-x: hidden;
 
   @media (max-width: 320px) {
     font-size: 0.8rem;
@@ -159,5 +155,4 @@ export const StatusText = styled.p`
 
 export const InfoLabel = styled.label`
   color: ${({ theme }) => theme.colors.neutral.inverted};
-  overflow-x: hidden;
 `;

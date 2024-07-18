@@ -24,7 +24,7 @@
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=chpt_79aa966e7eb4a6e --auto-accept-changes",
     "test-storybook": "test-storybook",
-    "prepare": "husky"
+    "json-server": "json-server --watch db.json --port 4000"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.1",
@@ -94,6 +94,7 @@
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-tsdoc": "^0.2.17",
     "husky": "^9.0.10",
+    "json-server": "^1.0.0-beta.1",
     "lint-staged": "^15.2.2",
     "postcss-styled-syntax": "^0.5.0",
     "prettier": "3.2.5",

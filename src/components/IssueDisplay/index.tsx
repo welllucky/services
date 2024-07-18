@@ -1,18 +1,18 @@
-import { Selo } from "@/assets/Icons";
 import { IssueDisplayProps } from "@/assets";
+import { Selo } from "@/assets/Icons";
 import { buildTestIds } from "@/utils";
 import {
+  IconeSelo,
+  InfoLabel,
   IssueContainer,
   IssueContent,
-  IssueNumber,
   IssueDescription,
+  IssueNumber,
   IssueState,
   IssueStatus,
+  IssueWrapper,
   OpeningText,
   StatusText,
-  IconeSelo,
-  IssueWrapper,
-  InfoLabel,
 } from "./styles";
 
 const IssueDisplay = ({
@@ -27,17 +27,16 @@ const IssueDisplay = ({
   return (
     <IssueWrapper
       {...buildTestIds("issue-wrapper")}
+      color={color}
+      $borderColor={$borderColor}
+      $hasUpdate={isUpdated}
       href={`/chamado/${id}`}>
       {isUpdated && (
         <IconeSelo {...buildTestIds("icone-selo")}>
           <Selo />
         </IconeSelo>
       )}
-      <IssueContainer
-        {...buildTestIds("issue-container")}
-        color={color}
-        $borderColor={$borderColor}
-        $hasUpdate={isUpdated}>
+      <IssueContainer {...buildTestIds("issue-container")}>
         <IssueContent
           {...buildTestIds("issue-content")}
           $hasUpdate={isUpdated}>

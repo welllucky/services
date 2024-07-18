@@ -1,3 +1,3 @@
-import { ChamadoAPI } from "./Chamado";
+import { IssueApi } from "./Issue";
 
-export const chamado = new ChamadoAPI();
+export const issueApi = new IssueApi();

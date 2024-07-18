@@ -4,7 +4,6 @@ import { PageContainer } from "@/styles";
 import Image from "next/image";
 
 const Loading = () => {
-  // You can add any UI inside Loading, including a Skeleton.
   return (
     <PageContainer>
       <Image

@@ -16,6 +16,7 @@ export const InfoHistoryPainelTitle = styled.h2`
 `;
 
 export const InfoHistoryPainelContent = styled.div`
+flex-direction: column;
   max-height: 258px;
   gap: 16px;
   overflow-y: auto;

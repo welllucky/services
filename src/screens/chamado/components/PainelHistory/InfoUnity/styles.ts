@@ -4,6 +4,7 @@ export const InfoUnityContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   min-height: 32px;
   gap: 10px;
@@ -16,6 +17,7 @@ export const InfoUnityDescription = styled.p`
   -webkit-box-orient: vertical;
   font-size: 14px;
   max-width: 250px;
+  width: 100%;
   line-height: 114%;
   overflow: hidden;
   text-overflow: ellipsis;

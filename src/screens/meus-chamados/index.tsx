@@ -9,13 +9,13 @@ import {
 } from "@/components";
 import { PageContainer } from "@/styles";
 import { useRouter } from "next/navigation";
-import { chamado } from "@/utils";
+import { issueApi } from "@/utils";
 import { MainContainer } from "../pesquisa/styles";
 import { ButtonWrapper } from "./styles";
 
 const MyCallsPage = () => {
   const { push } = useRouter();
-  const { data, isLoading } = chamado.getChamados();
+  const { data, isLoading } = issueApi.getIssues();
   const issuesQuantity = data?.length ?? 0;
   return (
     <>

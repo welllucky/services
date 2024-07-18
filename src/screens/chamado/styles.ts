@@ -9,13 +9,9 @@ export const IssuePageContainer = styled(Column)`
 
 export const IssuePageContent = styled(Column)`
   height: 100%;
-  gap: 8px;
+  gap: 16px;
   overflow-x: hidden;
   overflow-y: auto;
 `;
 
-export const UserActionContainer = styled.div`
-  position: absolute;
-  bottom: 13svh;
-  right: 8vw;
-`;
+
