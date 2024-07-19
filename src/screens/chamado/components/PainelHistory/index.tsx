@@ -8,6 +8,7 @@ import {
   InfoHistoryPainelContent,
   InfoHistoryPainelTitle,
 } from "./styles";
+import { useTicket } from "@/utils";
 
 interface InfoHistoryPainelProps {
   data?: InfoUnityProps[];
@@ -21,7 +22,11 @@ const InfoHistoryPainel = ({ data, isLoading }: InfoHistoryPainelProps) => {
     return <Loading color={theme.colors.primary["35"]} />;
   }
 
-  if (!data) {
+  const { historic } = useTicket();
+
+  const events = historic || data;
+
+  if (!events) {
     return (
       <NoContent
         icon={
@@ -38,10 +43,10 @@ const InfoHistoryPainel = ({ data, isLoading }: InfoHistoryPainelProps) => {
   }
 
   return (
-    <InfoHistoryPainelContainer $hasContent={data.length !== 0}>
+    <InfoHistoryPainelContainer $hasContent={events.length !== 0}>
       <InfoHistoryPainelTitle>Histórico</InfoHistoryPainelTitle>
       <InfoHistoryPainelContent>
-        {data.map((info) => (
+        {events.map((info) => (
           <InfoUnity {...info} />
         ))}
       </InfoHistoryPainelContent>

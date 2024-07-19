@@ -1,7 +1,7 @@
 "use client";
 
 import { BackButton } from "@/components";
-import { IssuePageContainer } from "@/screens/chamado/styles";
+import { TicketPageContainer } from "@/screens/chamado/styles";
 import { Column, Row, TitleComponent } from "@/styles";
 import { FormButtons } from "@/components/Form";
 import { ReactNode, useEffect, useMemo } from "react";
@@ -98,7 +98,7 @@ const Template = ({ children }: Readonly<{ children: ReactNode }>) => {
       {...buildTestIds("form-provider")}
       {...methods}
       key="open-ticket-form">
-      <IssuePageContainer
+      <TicketPageContainer
         {...buildTestIds("issue-page-container")}
         height="100%">
         <Row {...buildTestIds("back-button-row")}>
@@ -139,7 +139,7 @@ const Template = ({ children }: Readonly<{ children: ReactNode }>) => {
             }
           />
         </Column>
-      </IssuePageContainer>
+      </TicketPageContainer>
     </FormProvider>
   );
 };

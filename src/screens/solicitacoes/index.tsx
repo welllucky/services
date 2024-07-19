@@ -3,14 +3,15 @@
 import { Header, Loading, NoContent } from "@/components";
 import { PageContainer } from "@/styles";
 import { useTheme } from "styled-components";
-import { InfoDisplayData } from "../home/data";
-import { MainContainer } from "../pesquisa/styles";
 import InfoDisplay from "@/components/InfoDisplay";
+import { MainContainer } from "../pesquisa/styles";
+import { ITicket } from "@/assets";
 
 const RequestsPage = () => {
   const theme = useTheme();
   const isLoading = false;
-  const listaChamados = InfoDisplayData;
+
+  const listaChamados = [] as ITicket[];
 
   return (
     <>
@@ -30,10 +31,10 @@ const RequestsPage = () => {
                   $borderColor="#61A12F"
                   key={issue.id}
                   id={issue.id}
-                  nome={issue.nome}
+                  nome={issue.resume}
                   date={issue.date}
-                  $status={issue.$status}
-                  isUpdated={issue.isUpdated}
+                  $status={issue.status}
+                  isUpdated={true}
                 />
               ))
             ) : (

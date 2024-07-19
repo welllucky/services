@@ -3,13 +3,14 @@
 import { Loading } from "@/components";
 
 import { ITicket } from "@/types";
+import { TicketProvider } from "@/utils";
 import { buildTestIds, resetForm } from "@/utils/functions";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
-  IssueActionButton,
   FormDisplay,
   InfoHistoryPainel,
+  IssueActionButton,
   TicketPageBackButton,
   TicketPageTitle,
 } from "./components";
@@ -31,20 +32,22 @@ const TicketPage = ({ data }: TicketPageProps) => {
   }
 
   return (
-    <TicketPageContainer $full>
-      <TicketPageBackButton router={router} />
-      <TicketPageTitle text={`Chamado n° ${data?.id}`} />
-      <TicketPageContent
-        {...buildTestIds("content-column")}
-        height="100%">
-        <FormDisplay data={data} />
-        <InfoHistoryPainel
-          data={data?.historic}
-          isLoading={!data}
-        />
-      </TicketPageContent>
-      <IssueActionButton />
-    </TicketPageContainer>
+    <TicketProvider data={data}>
+      <TicketPageContainer $full>
+        <TicketPageBackButton router={router} />
+        <TicketPageTitle text={`Chamado n° ${data?.id}`} />
+        <TicketPageContent
+          {...buildTestIds("content-column")}
+          height="100%">
+          <FormDisplay data={data} />
+          <InfoHistoryPainel
+            data={data?.historic}
+            isLoading={!data}
+          />
+        </TicketPageContent>
+        <IssueActionButton />
+      </TicketPageContainer>
+    </TicketProvider>
   );
 };
 

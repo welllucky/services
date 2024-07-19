@@ -35,7 +35,7 @@ const Homepage = () => {
                 key={issue?.id}
                 id={issue?.id}
                 nome={issue?.description}
-                date={dataFormatter(issue?.date)}
+                date={dataFormatter(issue.date)}
                 $status="Registrado"
                 isUpdated={false}
               />

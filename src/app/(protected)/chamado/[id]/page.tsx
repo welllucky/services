@@ -1,4 +1,5 @@
 import { ticketUrl } from "@/app/api/url";
+import { ITicket } from "@/assets";
 import { TicketPage } from "@/screens";
 
 export const revalidate = 10;
@@ -17,7 +18,7 @@ const Ticket = async ({
     },
   });
 
-  const data = await response.json();
+  const data = (await response.json()) as ITicket;
 
   return <TicketPage data={data} />;
 };

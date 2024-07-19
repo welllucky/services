@@ -13,7 +13,7 @@ export interface IssueActionOptionsType {
   isActive?: boolean;
 }
 
-export const IssueActionOptionsData = [
+const IssueActionOptionsData = [
   {
     index: 1,
     icon: (

@@ -1,12 +1,7 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import React, { ReactNode } from "react";
 
-type IssueStatus =
-  | "inProgress"
-  | "hasEnded"
-  | "notStarted"
-  | "canceled"
-  | "blocked";
+type IssueStatus = "inProgress" | "notStarted" | "closed" | "blocked";
 
 type InfoUnityProps = {
   id: string;
@@ -31,16 +26,16 @@ interface ITicket {
   resume: string;
   description: string;
   date: string;
-  historic: InfoUnityProps[];
-  priority: string;
+  historic?: InfoUnityProps[];
+  priority: "baixa" | "média" | "alta";
   type: string;
   status: IssueStatus;
-  created: Date;
-  updated: Date;
-  closed: Date;
-  createdBy: string;
-  updatedBy: string;
-  closedBy: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  closedAt?: Date;
+  createdBy?: string;
+  updatedBy?: string;
+  closedBy?: string;
   unity: string;
   sector: string;
 }

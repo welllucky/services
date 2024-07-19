@@ -1,19 +1,26 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/jsx-wrap-multilines */
+import { IssueActionOptionsType } from "@/screens/chamado/components/ActionButton/data";
 import {
   ArrowCounterClockwise,
   DotsThreeOutlineVertical,
   Play,
 } from "@phosphor-icons/react";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 import { useTheme } from "styled-components";
 import { RoundedButton } from "..";
-import { IssueActionOptionsData } from "./data";
 import { ActionButtonContainer, ActionButtonsContainer } from "./styles";
 
 interface ActionButtonProps {
-  action?: () => void;
+  isIssueOpen: boolean;
+  canReopenIssue: boolean;
+  actionOptions: IssueActionOptionsType[];
+  openAction: () => void;
+  reopenAction: () => void;
+}
+
+interface PrincipalIssueButtonProps
+  extends Pick<ActionButtonProps, "isIssueOpen" | "canReopenIssue"> {
+  action: () => void;
+  $isClicked: boolean;
 }
 
 const PrincipalIssueButton = ({
@@ -21,11 +28,7 @@ const PrincipalIssueButton = ({
   canReopenIssue,
   action,
   $isClicked,
-}: ActionButtonProps & {
-  isIssueOpen: boolean;
-  $isClicked: boolean;
-  canReopenIssue: boolean;
-}) => {
+}: PrincipalIssueButtonProps) => {
   const theme = useTheme();
   return (
     <RoundedButton
@@ -61,24 +64,45 @@ const PrincipalIssueButton = ({
   );
 };
 
-const ActionButton = () => {
+const ActionButton = ({
+  isIssueOpen = false,
+  canReopenIssue = false,
+  openAction,
+  reopenAction,
+  actionOptions,
+}: ActionButtonProps) => {
   const theme = useTheme();
-  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const [isIssueOpen, setIsIssueOpen] = useState(false);
-  const canReopenIssue = false;
-  const handleOptions = () => {
-    setIsOptionsOpen(!isOptionsOpen);
-  };
+  const [isOptionsOpen, setIsOptionsOpen] = useState(isIssueOpen);
 
-  const startIssueExecution = () => {
-    setIsIssueOpen(true);
-    toast.success("Chamado iniciado!");
+  useEffect(() => {
+    if (canReopenIssue) {
+      setIsOptionsOpen(false);
+    }
+  }, [canReopenIssue]);
+
+  const actionCallback = () => {
+    if (isIssueOpen) {
+      setIsOptionsOpen((state) => !state);
+      return;
+    }
+
+    if (canReopenIssue) {
+      reopenAction();
+      setIsOptionsOpen(true);
+      return;
+    }
+
+    if (!isIssueOpen) {
+      openAction();
+      setIsOptionsOpen(true);
+    }
   };
 
   return (
     <ActionButtonContainer>
       <ActionButtonsContainer $isVisible={isOptionsOpen}>
-        {IssueActionOptionsData.toReversed()
+        {actionOptions
+          .toReversed()
           .filter((option) => option.isActive)
           .map((option) => {
             return (
@@ -101,7 +125,7 @@ const ActionButton = () => {
         $isClicked={isOptionsOpen}
         isIssueOpen={isIssueOpen}
         canReopenIssue={canReopenIssue}
-        action={isIssueOpen ? handleOptions : startIssueExecution}
+        action={actionCallback}
       />
     </ActionButtonContainer>
   );
