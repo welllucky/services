@@ -1,16 +1,19 @@
-import { InputComponentsProps } from "@/types";
-import { ErrorText, WarningText } from "@/components";
 import { ChangeEvent } from "react";
-import { TextArea, TextAreaContainer } from "./styles";
-import { CustomFieldset } from "../../../Fieldset";
+import { TextArea } from "./styles";
+import { CustomFieldset } from "@/components/Fieldset";
 
-interface TextAreaProps extends InputComponentsProps {
+interface TextAreaProps {
+  labelText?: string;
+  width?: string;
+  height?: string;
+  placeholder: string;
+  value?: string;
+  isRequired?: boolean;
   // eslint-disable-next-line no-unused-vars
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export const CustomTextArea = ({
-  id,
   labelText,
   placeholder,
   width = "100%",
@@ -18,40 +21,19 @@ export const CustomTextArea = ({
   value,
   onChange,
   isRequired = false,
-  register,
-  registerOptions,
-  $status = "none",
-  errorText,
-  warnText,
 }: TextAreaProps) => {
   return (
-    <TextAreaContainer $status={$status}>
-      <CustomFieldset
-        width={width}
-        height={height}
-        $hasOverflow
-        labelText={labelText || ""}>
-        <TextArea
-          {...register(id, {
-            ...registerOptions,
-            required: isRequired
-              ? "Este campo é obrigatório"
-              : registerOptions?.required
-                ? registerOptions?.required
-                : false,
-            onChange: (e) => {
-              if (onChange) onChange(e);
-              if (registerOptions?.onChange) registerOptions.onChange(e);
-            },
-          })}
-          height={height || "100%"}
-          width="100%"
-          placeholder={placeholder}
-          value={value}
-        />
-      </CustomFieldset>
-      {$status === "invalid" && <ErrorText>{errorText}</ErrorText>}
-      {$status === "warning" && <WarningText>{warnText}</WarningText>}
-    </TextAreaContainer>
+    <CustomFieldset
+      width={width as string}
+      labelText={labelText as string}>
+      <TextArea
+        height={height as string}
+        width={width as string}
+        required={isRequired}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+    </CustomFieldset>
   );
 };

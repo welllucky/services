@@ -1,10 +1,10 @@
 import { Row, TitleComponent } from "@/styles";
 
-type IssuePageTitleProps = {
+type TicketPageTitleProps = {
   text: string;
 };
 
-export const IssuePageTitle = ({ text }: IssuePageTitleProps) => {
+export const TicketPageTitle = ({ text }: TicketPageTitleProps) => {
   return (
     <Row>
       <TitleComponent>{text}</TitleComponent>

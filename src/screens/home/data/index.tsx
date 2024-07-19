@@ -1,6 +1,6 @@
-import { IssueDisplayProps } from "@/types";
+import { InfoDisplayProps } from "@/types";
 
-const IssueDisplayData: IssueDisplayProps[] = [
+const InfoDisplayData: InfoDisplayProps[] = [
   {
     id: "0000000-1",
     nome: "Acabou o papel na máquina de ponto",
@@ -66,4 +66,4 @@ const IssueDisplayData: IssueDisplayProps[] = [
   },
 ];
 
-export { IssueDisplayData };
+export { InfoDisplayData };

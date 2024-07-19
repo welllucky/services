@@ -1,8 +1,6 @@
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler } from "react";
 import { CustomFieldset } from "@/components/Fieldset";
-import { InputComponentsProps } from "@/assets";
-import { ErrorText, WarningText } from "@/components";
-import { SelectComponent, CustomOption, SelectContainer } from "./styles";
+import { SelectComponent, CustomOption } from "./styles";
 
 interface OptionProps {
   key: string;
@@ -12,17 +10,21 @@ interface OptionProps {
   isSelected?: boolean;
 }
 
-interface SelectProps extends InputComponentsProps {
+interface SelectProps {
+  labelText: string;
+  width?: string;
+  placeholder?: string;
+  height?: string;
   onChange?: ChangeEventHandler<HTMLSelectElement>;
   options?: OptionProps[];
+  isRequired?: boolean;
   multiple?: boolean;
   form?: string;
-  name?: string;
-  value?: string;
+  // name?: string;
+  // value?: string;
 }
 
 export const CustomSelect = ({
-  id,
   labelText,
   placeholder = "selecione uma opção",
   width = "100%",
@@ -31,53 +33,33 @@ export const CustomSelect = ({
   onChange,
   isRequired = false,
   multiple = false,
-  register,
-  registerOptions,
-  $status = "none",
-  errorText,
-  warnText,
+  form,
 }: SelectProps) => {
-  const [selectedValue, setSelectedValue] = useState<string>("");
   return (
-    <SelectContainer $status={$status}>
-      <CustomFieldset
-        width={width}
-        height={height}
-        labelText={labelText || ""}>
-        <SelectComponent
-          isPlaceholder={selectedValue === ""}
-          {...register(id, {
-            ...registerOptions,
-            required: isRequired
-              ? "É necessário escolher uma opção"
-              : registerOptions?.required
-                ? registerOptions?.required
-                : false,
-            onChange: (e) => {
-              setSelectedValue(e.target.value);
-              if (onChange) onChange(e);
-              if (registerOptions?.onChange) registerOptions.onChange(e);
-            },
-          })}
-          multiple={multiple}>
+    <CustomFieldset
+      width={width}
+      height={height}
+      labelText={labelText}>
+      <SelectComponent
+        onChange={onChange}
+        required={isRequired}
+        name={placeholder}
+        multiple={multiple}
+        form={form}
+        defaultValue={placeholder}>
+        <CustomOption value="">
+          {placeholder ?? "selecione uma opção abaixo"}
+        </CustomOption>
+        {options?.map((option) => (
           <CustomOption
-            // disabled={isRequired}
-            value="">
-            {placeholder ?? "selecione uma opção abaixo"}
+            key={option?.key}
+            value={option?.value}
+            selected={option?.isSelected as boolean}
+            disabled={option?.isDisabled as boolean}>
+            {option?.text}
           </CustomOption>
-          {options?.map((option) => (
-            <CustomOption
-              key={option?.key}
-              value={option.value}
-              selected={!!option?.isSelected}
-              disabled={!!option?.isDisabled}>
-              {option?.text}
-            </CustomOption>
-          ))}
-        </SelectComponent>
-        {$status === "invalid" && <ErrorText>{errorText}</ErrorText>}
-        {$status === "warning" && <WarningText>{warnText}</WarningText>}
-      </CustomFieldset>
-    </SelectContainer>
+        ))}
+      </SelectComponent>
+    </CustomFieldset>
   );
 };

@@ -1,12 +1,12 @@
 import { CustomFieldset } from "@/components/Fieldset";
 import { SectionInfoForm } from "@/screens/abrir-chamado/confirmar-chamado/styles";
 import { theme } from "@/styles";
-import { IIssue } from "@/types";
+import { ITicket } from "@/types";
 import { dataFormatter } from "@/utils";
 import { FormDisplayContainer } from "./styles";
 
 type FormDisplayProps = {
-  data: IIssue | undefined;
+  data: ITicket;
 };
 
 export const FormDisplay = ({ data }: FormDisplayProps) => {
@@ -36,7 +36,7 @@ export const FormDisplay = ({ data }: FormDisplayProps) => {
           labelText="Tipo"
           width="59%"
           height="64px">
-          {data?.priority}
+          {data?.type}
         </CustomFieldset>
         <CustomFieldset
           color={theme.colors.primary.default}

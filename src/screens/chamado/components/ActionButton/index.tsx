@@ -1,10 +1,11 @@
-import { IssueActionButton } from "@/components";
+import { ActionButton } from "@/components";
 import { UserActionContainer } from "./styles";
 
-export const ActionButton = () => {
+
+export const IssueActionButton = () => {
   return (
     <UserActionContainer>
-      <IssueActionButton />
+      <ActionButton />
     </UserActionContainer>
   );
 };

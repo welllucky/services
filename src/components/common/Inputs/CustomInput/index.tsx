@@ -1,15 +1,16 @@
 "use client";
 
-import { StaticImageData } from "next/image";
 import { InputComponentsProps } from "@/assets";
+import { StaticImageData } from "next/image";
 import { ChangeEvent } from "react";
+import { Icon } from "../..";
 import {
-  InputContainer,
-  InputComponent,
   ContentContainer,
+  InputComponent,
+  InputContainer,
   Label,
 } from "./styles";
-import { ErrorText, Icon, WarningText } from "../..";
+import { ErrorText, WarningText } from "@/components/SupportText";
 
 export interface InputStylesProps {
   $backgroundColor?: string;

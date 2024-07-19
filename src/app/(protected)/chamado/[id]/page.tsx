@@ -1,7 +1,25 @@
-import { IssuePage, IssuePageProps } from "@/screens";
+import { ticketUrl } from "@/app/api/url";
+import { TicketPage } from "@/screens";
 
-const Issue = ({ params }: { params: IssuePageProps }) => {
-  return <IssuePage id={params.id} />;
+export const revalidate = 10;
+
+const Ticket = async ({
+  params,
+}: {
+  params: {
+    id: string;
+  };
+}) => {
+  const response = await fetch(`${ticketUrl}${params.id}`, {
+    next: {
+      revalidate: 60 * 1,
+      tags: ["ticket"],
+    },
+  });
+
+  const data = await response.json();
+
+  return <TicketPage data={data} />;
 };
 
-export default Issue;
+export default Ticket;

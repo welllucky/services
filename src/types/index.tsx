@@ -1,7 +1,7 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import React, { ReactNode } from "react";
 
-type IIssueStatus =
+type IssueStatus =
   | "inProgress"
   | "hasEnded"
   | "notStarted"
@@ -12,9 +12,9 @@ type InfoUnityProps = {
   id: string;
   description: string;
   icon?: string;
-}
+};
 
-type IssueDisplayProps = {
+type InfoDisplayProps = {
   id: string;
   nome: string;
   date: string;
@@ -26,14 +26,15 @@ type IssueDisplayProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
-interface IIssue {
+interface ITicket {
   id: string;
   resume: string;
   description: string;
   date: string;
   historic: InfoUnityProps[];
   priority: string;
-  status: IIssueStatus;
+  type: string;
+  status: IssueStatus;
   created: Date;
   updated: Date;
   closed: Date;
@@ -107,16 +108,19 @@ type TextTheme = {
   text: string;
 };
 
+export type * from "./DataTag";
 export type * from "./Themes";
 
 export type {
   IconButtonProps,
   IconProps,
-  IIssue,
-  IIssueStatus, InfoUnityProps, IssueDisplayProps,
+  InfoDisplayProps,
+  InfoUnityProps,
   IssueDto,
+  IssueStatus,
+  ITicket,
   NoContentProps,
   OptionMenuProps,
   OptionMenuStyleProps,
-  TextTheme
+  TextTheme,
 };

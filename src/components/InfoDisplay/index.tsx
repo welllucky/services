@@ -1,4 +1,4 @@
-import { IssueDisplayProps } from "@/assets";
+import { InfoDisplayProps } from "@/assets";
 import { Selo } from "@/assets/Icons";
 import { buildTestIds } from "@/utils";
 import {
@@ -15,7 +15,7 @@ import {
   StatusText,
 } from "./styles";
 
-const IssueDisplay = ({
+const InfoDisplay = ({
   id,
   nome,
   date,
@@ -23,7 +23,7 @@ const IssueDisplay = ({
   isUpdated,
   color,
   $borderColor,
-}: Readonly<IssueDisplayProps>) => {
+}: Readonly<InfoDisplayProps>) => {
   return (
     <IssueWrapper
       {...buildTestIds("issue-wrapper")}
@@ -62,4 +62,4 @@ const IssueDisplay = ({
   );
 };
 
-export default IssueDisplay;
+export default InfoDisplay;

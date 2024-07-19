@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, IssueDisplay, Loading, NoContent } from "@/components/";
+import { Header, Loading, NoContent } from "@/components/";
 import { AddNewIssueButton } from "@/components/common/Buttons";
 import { PageContainer } from "@/styles";
 import { SS_KEY_USER_PREVIOUS_PAGE, dataFormatter, issueApi } from "@/utils";
@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "styled-components";
 import { MainContainer } from "../pesquisa/styles";
 import { ButtonWrapper } from "./styles";
+import InfoDisplay from "@/components/InfoDisplay";
 
 const Homepage = () => {
   const theme = useTheme();
@@ -30,7 +31,7 @@ const Homepage = () => {
         <MainContainer $hasContent={issuesQuantity !== 0}>
           {data?.length ? (
             data.map((issue) => (
-              <IssueDisplay
+              <InfoDisplay
                 key={issue?.id}
                 id={issue?.id}
                 nome={issue?.description}

@@ -30,16 +30,16 @@ export const IssueWrapper = styled(Link)<ContainerStyleProps>`
   position: relative;
   background-color: ${({ color }) => color ?? "#D9F5C5"};
   border-radius: 1rem;
-  border: 0.2rem solid #7ac143;
+  padding: 0.2rem;
 
   &:hover {
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.28);
-    border: 0.35rem solid ${({ $borderColor }) => $borderColor ?? "#38a914"};
+    border: 0.2rem solid ${({ $borderColor }) => $borderColor ?? "#38a914"};
   }
 
   &:active {
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.28);
-    border: 0.35rem solid ${({ $borderColor }) => $borderColor ?? "#38a914"};
+    border: 0.2rem solid ${({ $borderColor }) => $borderColor ?? "#38a914"};
   }
 
   transition: 0.3s ease-in-out;

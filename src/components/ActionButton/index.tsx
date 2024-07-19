@@ -6,11 +6,11 @@ import {
   Play,
 } from "@phosphor-icons/react";
 import { useState } from "react";
-import { useTheme } from "styled-components";
 import toast from "react-hot-toast";
+import { useTheme } from "styled-components";
 import { RoundedButton } from "..";
-import { ActionButtonsContainer, IssueActionButtonContainer } from "./styles";
 import { IssueActionOptionsData } from "./data";
+import { ActionButtonContainer, ActionButtonsContainer } from "./styles";
 
 interface ActionButtonProps {
   action?: () => void;
@@ -61,7 +61,7 @@ const PrincipalIssueButton = ({
   );
 };
 
-const IssueActionButton = () => {
+const ActionButton = () => {
   const theme = useTheme();
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [isIssueOpen, setIsIssueOpen] = useState(false);
@@ -76,7 +76,7 @@ const IssueActionButton = () => {
   };
 
   return (
-    <IssueActionButtonContainer>
+    <ActionButtonContainer>
       <ActionButtonsContainer $isVisible={isOptionsOpen}>
         {IssueActionOptionsData.toReversed()
           .filter((option) => option.isActive)
@@ -103,8 +103,8 @@ const IssueActionButton = () => {
         canReopenIssue={canReopenIssue}
         action={isIssueOpen ? handleOptions : startIssueExecution}
       />
-    </IssueActionButtonContainer>
+    </ActionButtonContainer>
   );
 };
 
-export default IssueActionButton;
+export { ActionButton };

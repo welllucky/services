@@ -2,51 +2,50 @@
 
 import { Loading } from "@/components";
 
-import { issueApi } from "@/utils";
+import { ITicket } from "@/types";
 import { buildTestIds, resetForm } from "@/utils/functions";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
-  ActionButton,
+  IssueActionButton,
   FormDisplay,
   InfoHistoryPainel,
-  IssuePageBackButton,
-  IssuePageTitle,
+  TicketPageBackButton,
+  TicketPageTitle,
 } from "./components";
-import { IssuePageContainer, IssuePageContent } from "./styles";
+import { TicketPageContainer, TicketPageContent } from "./styles";
 
-export interface IssuePageProps {
-  id: string;
+export interface TicketPageProps {
+  data: ITicket;
 }
 
-const IssuePage = ({ id }: IssuePageProps) => {
+const TicketPage = ({ data }: TicketPageProps) => {
   useEffect(() => {
     resetForm();
   }, []);
 
   const router = useRouter();
-  const { data, isLoading } = issueApi.getIssue(id);
 
-  if (isLoading) {
+  if (!data) {
     return <Loading overlayOn />;
   }
 
   return (
-    <IssuePageContainer $full>
-      <IssuePageBackButton router={router} />
-      <IssuePageTitle text={`Chamado n° ${data?.id}`} />
-      <IssuePageContent
+    <TicketPageContainer $full>
+      <TicketPageBackButton router={router} />
+      <TicketPageTitle text={`Chamado n° ${data?.id}`} />
+      <TicketPageContent
         {...buildTestIds("content-column")}
         height="100%">
         <FormDisplay data={data} />
         <InfoHistoryPainel
           data={data?.historic}
-          isLoading={isLoading}
+          isLoading={!data}
         />
-      </IssuePageContent>
-      <ActionButton />
-    </IssuePageContainer>
+      </TicketPageContent>
+      <IssueActionButton />
+    </TicketPageContainer>
   );
 };
 
-export { IssuePage };
+export { TicketPage };

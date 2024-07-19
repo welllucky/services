@@ -2,14 +2,14 @@
 
 import {
   AddNewIssueButton,
-  IssueDisplay,
-  Loading,
   Header,
+  InfoDisplay,
+  Loading,
   NoContent,
 } from "@/components";
 import { PageContainer } from "@/styles";
-import { useRouter } from "next/navigation";
 import { issueApi } from "@/utils";
+import { useRouter } from "next/navigation";
 import { MainContainer } from "../pesquisa/styles";
 import { ButtonWrapper } from "./styles";
 
@@ -32,7 +32,7 @@ const MyCallsPage = () => {
             <MainContainer $hasContent={!!issuesQuantity}>
               {data?.length ? (
                 data.map((issue) => (
-                  <IssueDisplay
+                  <InfoDisplay
                     key={issue.id}
                     id={issue.id}
                     nome={issue.resume}

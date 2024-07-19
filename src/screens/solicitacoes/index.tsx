@@ -1,15 +1,16 @@
 "use client";
 
-import { NoContent, Header, IssueDisplay, Loading } from "@/components";
+import { Header, Loading, NoContent } from "@/components";
 import { PageContainer } from "@/styles";
 import { useTheme } from "styled-components";
+import { InfoDisplayData } from "../home/data";
 import { MainContainer } from "../pesquisa/styles";
-import { IssueDisplayData } from "../home/data";
+import InfoDisplay from "@/components/InfoDisplay";
 
 const RequestsPage = () => {
   const theme = useTheme();
   const isLoading = false;
-  const listaChamados = IssueDisplayData;
+  const listaChamados = InfoDisplayData;
 
   return (
     <>
@@ -24,7 +25,7 @@ const RequestsPage = () => {
           <MainContainer $hasContent={!!listaChamados}>
             {listaChamados?.length ? (
               listaChamados.map((issue) => (
-                <IssueDisplay
+                <InfoDisplay
                   color="#9EDC72"
                   $borderColor="#61A12F"
                   key={issue.id}
