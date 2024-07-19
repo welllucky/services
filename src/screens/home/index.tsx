@@ -2,13 +2,13 @@
 
 import { Header, Loading, NoContent } from "@/components/";
 import { AddNewIssueButton } from "@/components/common/Buttons";
+import { InfoDisplay } from "@/components/InfoDisplay";
 import { PageContainer } from "@/styles";
 import { SS_KEY_USER_PREVIOUS_PAGE, dataFormatter, issueApi } from "@/utils";
 import { useRouter } from "next/navigation";
 import { useTheme } from "styled-components";
 import { MainContainer } from "../pesquisa/styles";
 import { ButtonWrapper } from "./styles";
-import InfoDisplay from "@/components/InfoDisplay";
 
 const Homepage = () => {
   const theme = useTheme();

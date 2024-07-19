@@ -1,19 +1,15 @@
+import { ErrorText, WarningText } from "@/components";
+import { InputComponentsProps } from "@/types";
 import { ChangeEvent } from "react";
-import { TextArea } from "./styles";
-import { CustomFieldset } from "@/components/Fieldset";
+import { CustomFieldset } from "../../../Fieldset";
+import { TextArea, TextAreaContainer } from "./styles";
 
-interface TextAreaProps {
-  labelText?: string;
-  width?: string;
-  height?: string;
-  placeholder: string;
-  value?: string;
-  isRequired?: boolean;
+interface TextAreaProps extends InputComponentsProps {
   // eslint-disable-next-line no-unused-vars
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
-
 export const CustomTextArea = ({
+  id,
   labelText,
   placeholder,
   width = "100%",
@@ -21,19 +17,40 @@ export const CustomTextArea = ({
   value,
   onChange,
   isRequired = false,
+  register,
+  registerOptions,
+  $status = "none",
+  errorText,
+  warnText,
 }: TextAreaProps) => {
   return (
-    <CustomFieldset
-      width={width as string}
-      labelText={labelText as string}>
-      <TextArea
-        height={height as string}
-        width={width as string}
-        required={isRequired}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </CustomFieldset>
+    <TextAreaContainer $status={$status}>
+      <CustomFieldset
+        width={width}
+        height={height}
+        $hasOverflow
+        labelText={labelText || ""}>
+        <TextArea
+          {...register(id, {
+            ...registerOptions,
+            required: isRequired
+              ? "Este campo é obrigatório"
+              : registerOptions?.required
+                ? registerOptions?.required
+                : false,
+            onChange: (e) => {
+              if (onChange) onChange(e);
+              if (registerOptions?.onChange) registerOptions.onChange(e);
+            },
+          })}
+          height={height || "100%"}
+          width="100%"
+          placeholder={placeholder}
+          value={value}
+        />
+      </CustomFieldset>
+      {$status === "invalid" && <ErrorText>{errorText}</ErrorText>}
+      {$status === "warning" && <WarningText>{warnText}</WarningText>}
+    </TextAreaContainer>
   );
 };

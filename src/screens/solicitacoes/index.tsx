@@ -1,11 +1,11 @@
 "use client";
 
+import { ITicket } from "@/assets";
 import { Header, Loading, NoContent } from "@/components";
+import { InfoDisplay } from "@/components/InfoDisplay";
 import { PageContainer } from "@/styles";
 import { useTheme } from "styled-components";
-import InfoDisplay from "@/components/InfoDisplay";
 import { MainContainer } from "../pesquisa/styles";
-import { ITicket } from "@/assets";
 
 const RequestsPage = () => {
   const theme = useTheme();
@@ -34,7 +34,7 @@ const RequestsPage = () => {
                   nome={issue.resume}
                   date={issue.date}
                   $status={issue.status}
-                  isUpdated={true}
+                  isUpdated
                 />
               ))
             ) : (

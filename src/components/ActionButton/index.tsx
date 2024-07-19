@@ -1,4 +1,4 @@
-import { IssueActionOptionsType } from "@/screens/chamado/components/ActionButton/data";
+import { IssueActionOptionsType } from "@/screens/chamado/components";
 import {
   ArrowCounterClockwise,
   DotsThreeOutlineVertical,

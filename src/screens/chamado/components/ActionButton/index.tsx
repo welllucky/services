@@ -1,14 +1,14 @@
-import { ActionButton } from "@/components";
 import { useTicket } from "@/utils";
-import { UserActionContainer } from "./styles";
 
+import { ActionButton } from "@/components/ActionButton";
 import { theme } from "@/styles";
 import { ChatCircleText, Check } from "@phosphor-icons/react";
 import { ReactNode } from "react";
+import { UserActionContainer } from "./styles";
 
 type UserList = "resolver" | "creator" | "viewer";
 
-interface IssueActionOptionsType {
+export interface IssueActionOptionsType {
   index: number;
   icon: ReactNode;
   title: string;

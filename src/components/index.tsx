@@ -1,4 +1,3 @@
-export { ActionButton } from "./ActionButton";
 export * from "./CallInformation";
 export * from "./common";
 export * from "./Fieldset";

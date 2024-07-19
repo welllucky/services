@@ -11,20 +11,19 @@ function httpClient<T>(
     let res: AxiosResponse<T>;
     switch (type) {
       case "DELETE":
-         res = await axios
-          .delete<T>(originUrl, { headers });
+        res = await axios.delete<T>(originUrl, { headers });
         return res.data as unknown as T;
 
       case "POST":
-         res = await axios.post<T>(originUrl, body, { headers });
+        res = await axios.post<T>(originUrl, body, { headers });
         return res.data as unknown as T;
 
       case "PUT":
-         res = await axios.put<T>(originUrl, body, { headers });
+        res = await axios.put<T>(originUrl, body, { headers });
         return res.data as unknown as T;
 
       default:
-         res = await axios.get<T>(originUrl, { headers });
+        res = await axios.get<T>(originUrl, { headers });
         return res.data as unknown as T;
     }
   };

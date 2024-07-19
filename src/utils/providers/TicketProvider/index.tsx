@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 import { ITicket } from "@/types";
 import { createTicketStore, TicketStore } from "@/utils/stores";
-import { createContext, useContext, useRef } from "react";
+import React, { createContext, useContext, useRef } from "react";
 import { useStore } from "zustand";
 
 interface TicketProviderProps {
@@ -25,14 +26,18 @@ const TicketProvider = ({ children, data }: Readonly<TicketProviderProps>) => {
       {children}
     </TicketContext.Provider>
   );
-}
+};
 
+/**
+ * Custom hook for accessing TicketContext. It ensures the context is not null and provides access to it.
+ * @returns {object} The TicketContext object providing access to ticket data and actions.
+ */
 const useTicket = () => {
   const dataContext = useContext(TicketContext);
   if (!dataContext) {
     throw new Error("useTicket must be used within a TicketProvider");
   }
   return useStore(dataContext);
-}
+};
 
 export { TicketProvider, useTicket };

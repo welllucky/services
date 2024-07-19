@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ticketUrl } from "../url";
 
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 export async function GET(req: NextRequest) {
   try {
     // const { nextUrl } = req;
@@ -17,7 +18,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({
-      error: error,
+      error,
     });
   }
 }
@@ -32,7 +33,6 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       mode: "cors",
-  
     });
 
     const data = await response.json();
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({
-      error: error,
+      error,
     });
   }
 }

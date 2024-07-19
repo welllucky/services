@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { issueUrl } from "../url";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     // const { nextUrl } = req;
     // const {} = nextUrl;
@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({
-      error: error,
+      error,
     });
   }
 }
@@ -32,7 +32,6 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       mode: "cors",
-
     });
 
     const data = await response.json();
@@ -40,7 +39,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({
-      error: error,
+      error,
     });
   }
 }

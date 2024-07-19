@@ -15,6 +15,13 @@ import {
   StatusText,
 } from "./styles";
 
+/**
+ * Displays information based on the provided parameters.
+ * @param {Object} props - The properties passed to the InfoDisplay function.
+ * @param {string} props.id - The unique identifier for the information.
+ * @param {string} props.nome - The name associated with the information.
+ * @param {Date} props.date - The date related to the information.
+ */
 const InfoDisplay = ({
   id,
   nome,
@@ -62,4 +69,4 @@ const InfoDisplay = ({
   );
 };
 
-export default InfoDisplay;
+export { InfoDisplay };

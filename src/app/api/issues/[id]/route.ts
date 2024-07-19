@@ -5,9 +5,9 @@ type Ticket = {
   id: string;
 };
 
-export async function GET(req: NextRequest, { params }: { params: Ticket }) {
+export async function GET(_req: NextRequest, { params }: { params: Ticket }) {
   try {
-    const id = params.id;
+    const { id } = params;
     const ticketIdUrl = `${ticketUrl}${id}`;
 
     const response = await fetch(ticketIdUrl, {
@@ -23,7 +23,7 @@ export async function GET(req: NextRequest, { params }: { params: Ticket }) {
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json({
-      error: error,
+      error,
     });
   }
 }

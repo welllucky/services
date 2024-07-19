@@ -13,5 +13,3 @@ export const TicketPageContent = styled(Column)`
   overflow-x: hidden;
   overflow-y: auto;
 `;
-
-

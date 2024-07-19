@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
+/* eslint-disable no-param-reassign */
 import { ITicket } from "@/assets";
 import { createStore } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
+// skipcq: JS-0322
 interface TicketProps extends ITicket {}
 
 interface TicketState extends TicketProps {
@@ -9,11 +12,17 @@ interface TicketState extends TicketProps {
   block: () => void;
   reOpen: () => void;
   close: () => void;
+  // eslint-disable-next-line no-unused-vars
   update: (data: Partial<TicketProps>) => void;
 }
 
-type TicketStore = ReturnType<typeof createTicketStore>;
-
+/**
+ * Creates and initializes a ticket store with optional initial properties.
+ // eslint-disable-next-line
+ * @param {Partial<TicketProps>} initProps - Optional initial properties to merge with default ticket properties.
+ // eslint-disable-next-line
+ * @returns {TicketStore} An instance of the TicketStore, initialized with provided initial properties or defaults.
+ */
 const createTicketStore = (initProps?: Partial<TicketProps>) => {
   const DEFAULT_PROPS: TicketProps = {
     description: "",
@@ -80,5 +89,6 @@ const createTicketStore = (initProps?: Partial<TicketProps>) => {
   );
 };
 
+type TicketStore = ReturnType<typeof createTicketStore>;
 
-export {type TicketStore, createTicketStore};
+export { createTicketStore, type TicketStore };

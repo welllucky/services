@@ -1,13 +1,13 @@
 "use client";
 
 import { Header, NoContent } from "@/components";
+import { InfoDisplay } from "@/components/InfoDisplay";
 import { PageContainer } from "@/styles";
 import { InfoDisplayProps } from "@/types";
 import { useTheme } from "styled-components";
 import { Loading } from "../../components/Loading";
 import { SearchBar } from "../../components/SearchBar";
 import { MainContainer, SearchContainer } from "./styles";
-import InfoDisplay from "@/components/InfoDisplay";
 
 const SearchPage = ({
   searchResults,

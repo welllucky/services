@@ -6,8 +6,6 @@ import {
   InfoUnityId,
 } from "./styles";
 
-
-
 export const InfoUnity = ({ icon, description, id }: InfoUnityProps) => {
   return (
     description && (

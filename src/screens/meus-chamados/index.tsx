@@ -1,12 +1,12 @@
 "use client";
 
 import { AddNewIssueButton, Header, Loading, NoContent } from "@/components";
+import { InfoDisplay } from "@/components/InfoDisplay";
 import { PageContainer } from "@/styles";
 import { issueApi } from "@/utils";
 import { useRouter } from "next/navigation";
 import { MainContainer } from "../pesquisa/styles";
 import { ButtonWrapper } from "./styles";
-import InfoDisplay from "@/components/InfoDisplay";
 
 const MyCallsPage = () => {
   const { push } = useRouter();

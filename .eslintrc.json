@@ -25,7 +25,7 @@
     "no-unused-vars": "error",
     "linebreak-style": "off",
     "import/extensions": "off",
-    "import/prefer-default-export": ["warn", { "target": "single" }],
+    "import/prefer-default-export": "off",
     "react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
@@ -47,7 +47,6 @@
       { "namedComponents": "arrow-function" }
     ],
     "arrow-body-style": ["off", "always"],
-    "react/jsx-wrap-multilines": "off",
-    // "import/no-cycle": [2, { "ignoreExternal": true }]
+    "react/jsx-wrap-multilines": "off"
   }
 }
